@@ -1,0 +1,31 @@
+.header {
+  width: 100%;
+  display: flex;
+  background-color: transparent;
+  z-index: 10;
+  top: 0;
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff; 
+  padding: 10px 40px 0;
+}
+
+.header-reboot {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+.header-logo {
+  width: 80px;
+}
+
+.connect-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
