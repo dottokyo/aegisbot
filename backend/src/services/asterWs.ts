@@ -1,16 +1,17 @@
 import WebSocket from "ws";
-import db from "./db/index.js";
+import db from "../db/index.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-const url = process.env.ASTER_WS_URL!;
+const url: string = process.env.ASTER_WS_URL!;
+const channel: string = "null";
 // base url from env for ws
 
 interface AsterOrderEvent {
     type: string;
-    user: string;       // адрес трейдера
+    user: string;       
     symbol: string;
-    side: string;       // "long" / "short"
+    side: string;       
     amount: number;
     leverage: number;
 }
