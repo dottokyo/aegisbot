@@ -6,33 +6,61 @@
     <title>Aegisbot</title>
     <link rel="icon" href="images/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <div id="particles-js"></div>
 
-    <header class="header ">
+    <header class="header liquid-glass-header">
         <div class="left-header">
             <a href="" class="header-reboot"><img class="header-logo" src="images/favicon.png" alt="Aegisbot logo"></a>
         </div>
         <div class="right-header">
-            <button id="connect-btn" class="connect-button">connect wallet</button>
+            <button id="connect-btn" class="connect-button liquid-glass-button">connect wallet</button>
         </div>
     </header>
 
     <main class="main">
         <section class="dashboard">
-            <article class="pnl-stats liquid-glass-card"></article>
-            <article class="liquid-glass-card"></article>
-            <article class="liquid-glass-card"></article>
-            <article class="liquid-glass-card"></article>
+            <article id="pvalue" class="liquid-glass-card">
+                <h2>Title</h2>
+                <div class="grid">
+                    <div class="liquid-glass-card"></div> 
+                    <div class="liquid-glass-card"></div> 
+                    <div class="liquid-glass-card"></div> 
+                </div>
+            </article>
+            <article class="liquid-glass-card">
+                <h2>Title</h2>
+                <div class="grid">
+                    <div class="liquid-glass-card"></div> 
+                    <div class="liquid-glass-card"></div> 
+                    <div class="liquid-glass-card"></div> 
+                </div>
+            </article>
+            <article class="liquid-glass-card">
+                <h2>Title</h2>
+            </article>
+            <article class="liquid-glass-card">
+                <h2>Title</h2>
+            </article>
         </section>
     </main>
 
-    <footer>
-        <p></p>
-        <a></a>
+    <footer class="footer liquid-glass-footer">
+        <p>2025, Aegis</p>
+        <button
+        type="button"
+        class="twitter"
+        onclick="window.open('https://x.com', '_blank')"
+      >
+        @aegistrade
+      </button>
     </footer>
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -145,5 +173,6 @@
             });
         });
     </script>
+    <script type="module" src="scripts/index.js"></script>
 </body>
 </html>
