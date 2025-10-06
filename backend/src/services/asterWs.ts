@@ -1,11 +1,12 @@
 import WebSocket from "ws";
-import db from "../db/index.js";
 import dotenv from "dotenv";
+import { AITradingAgent } from "./aiAgent.js";
 
 dotenv.config();
 const url: string = process.env.ASTER_WS_URL!;
 const channel: string = "null";
 // base url from env for ws
+const aiAgent = new AITradingAgent(); 
 
 interface AsterOrderEvent {
     type: string;
@@ -27,8 +28,8 @@ export function startListener(channel: string) {
     ws.onmessage = (event) => {
         
         const data: any = JSON.parse(event.data) as AsterOrderEvent;
-        // mirrorOrder(data);
         console.log('📩 WebSocket resp:', data)
+        aiAgent.tradeDecision(data);  
     };
     // error and retrying
     ws.onerror = (error) => {

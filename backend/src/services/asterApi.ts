@@ -3,12 +3,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const url = process.env.ASTER_BASE_URL;  // Основной API URL
-
+const url = process.env.ASTER_BASE_URL; 
 const api = axios.create({
     baseURL: url,
     headers: {
-        'Authorization': `Bearer ${process.env.ASTER_API_KEY}`,  // API-ключ
+        'Authorization': `Bearer ${process.env.ASTER_API_KEY}`, 
     },
 });
 
