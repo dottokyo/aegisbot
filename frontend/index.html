@@ -9,9 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/winrate.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
     <div id="particles-js"></div>
@@ -28,44 +30,40 @@
     <main class="main">
         <section class="dashboard">
             <article id="pvalue" class="liquid-glass-card">
-                <h2>Title</h2>
-                <div class="grid">
+                <h2 class="article-title">Trading data</h2>
+                <div class="article-grid">
                     <div class="metric-card">
-                        <h3 class="metric-title">Metric 1</h3>
-                        <p class="metric-value">100</p>
+                        <h3 class="metric-title">Portfolio <br>Value</h3>
+                        <p class="metric-value">$54,100.24</p>
                     </div> 
                     <div class="metric-card">
-                        <h3 class="metric-title">Metric 2</h3>
-                        <p class="metric-value">100</p>
+                        <h3 class="metric-title">24h P&L</h3>
+                        <p class="metric-value in-black">+3.2%</p>
                     </div> 
                     <div class="metric-card">
-                        <h3 class="metric-title">Metric 3</h3>
-                        <p class="metric-value">100</p>
+                        <h3 class="metric-title">Win Rate</h3>
+                        <p class="metric-value">36%</p>
                     </div>
                 </div>
             </article>
-            <article class="liquid-glass-card">
+            <article id="pvalue" class="liquid-glass-card">
                 <h2>Title</h2>
-                <div class="grid">
-                    <div class="metric-card">
-                        <h3 class="metric-title">Metric 1</h3>
-                        <p class="metric-value">100</p>
-                    </div> 
-                    <div class="metric-card">
-                        <h3 class="metric-title">Metric 2</h3>
-                        <p class="metric-value">100</p>
-                    </div> 
-                    <div class="metric-card">
-                        <h3 class="metric-title">Metric 3</h3>
-                        <p class="metric-value">100</p>
-                    </div>
-                </div>
+                <div class="metric-card">
+                    <div id="graph" class="graph">graph placeholder</div>
+                </div> 
+            </article>
+            <article class="navigation-card liquid-glass-card">
+                <h2>Navigation</h2>
+                <nav class="navigation">
+                    <ul>
+                        <li><a class="liquid-glass-nav" href="/">portfolio</a></li>
+                        <li><a class="liquid-glass-nav" href="/">about us</a></li>
+                        <li><a class="liquid-glass-nav" href="/">docs</a></li>
+                    </ul>
+                </nav>
             </article>
             <article class="liquid-glass-card">
-                <h2>Title</h2>
-            </article>
-            <article class="liquid-glass-card">
-                <h2>Title</h2>
+                
             </article>
         </section>
     </main>

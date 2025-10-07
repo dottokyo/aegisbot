@@ -21,12 +21,10 @@
   width: 80px;
 }
 
-/* 239, 190, 132 */
-
 .connect-button {
   background-color: transparent;
   border: none;
-  margin-top: 15px;
+  margin-top: 10px;
   color: #000;
   text-transform: uppercase;
   cursor: pointer;
@@ -37,6 +35,12 @@
   font-weight: 400;
   border-radius: 10px;
   transition: scale 0.2s, box-shadow 0.2s;
+}
+
+@media (width < 1400px) {
+  .connect-button {
+    font-size: clamp(0.75rem, 0.7159rem + 0.1818vw, 0.875rem);
+  }
 }
 
 .connect-button:hover {
