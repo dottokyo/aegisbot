@@ -27,6 +27,12 @@
   font-weight: 400;
   cursor: pointer;
   text-decoration: underline;
+  outline: none;
+  transition: color 0.3s;
+}
+
+.twitter:focus {
+  color: #e0cdb4;
 }
 
 .liquid-glass-footer {

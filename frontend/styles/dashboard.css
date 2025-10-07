@@ -55,6 +55,7 @@
 
 .article-title {
   font-size: clamp(1.125rem, 1.0893rem + 0.1905vw, 1.375rem);
+  display: none;
 }
 
 .dashboard article .article-grid {
@@ -70,6 +71,7 @@
 @media (width < 1400px) {
   .dashboard article .article-grid {
     grid-template-columns: repeat(2, 1fr);
+    margin: 5% auto auto;
   }
   .dashboard article .article-grid .metric-card:last-child {
     justify-self: center;
@@ -165,7 +167,7 @@
 .metric-value {
   font-size: clamp(0.875rem, 0.8393rem + 0.1905vw, 1.125rem);
   font-weight: 600;
-  margin: auto auto 30%;
+  margin: 20% auto 30%;
 }
 
 @media (width < 1400px) {
@@ -184,15 +186,15 @@
   font-size: clamp(0.75rem, 0.7321rem + 0.0952vw, 0.875rem);
 }
 
-.navigation-card .navigation {
-  width: 100%;
-  margin-top: 4%;
+@media (width <= 800px) {
+  .navigation-card  {
+    order: 4;
+  }
 }
 
-@media (width < 500px) {
-  .navigation-card .navigation {
-    margin-top: 10%;
-  }
+.navigation-card .navigation {
+  width: 100%;
+  margin: auto;
 }
 
 .navigation-card .navigation ul {
@@ -251,15 +253,15 @@
   white-space: nowrap;
   font-size: clamp(0.75rem, 0.7143rem + 0.1905vw, 1rem);
   position: relative;
-}
-
-@media (width < 500px) {
-  .navigation-card .navigation ul li:last-child {
-    margin-bottom: 10px;
-  }
+  outline: none;
 }
 
 .navigation-card .navigation ul li a:hover {
+  scale: 1.05;
+  color: #e7c69c;
+}
+
+.navigation-card .navigation ul li a:focus {
   scale: 1.05;
   color: #e7c69c;
 }
@@ -297,7 +299,7 @@
   cursor: pointer;
   padding: 40px 40px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 40px;
+  font-size: clamp(1.875rem, 1.7857rem + 0.4762vw, 2.5rem);
   font-weight: 600;
   border-radius: 10px;
   background-color: #3d3b394b;
@@ -308,7 +310,7 @@
   text-align: center;
   justify-content: center;
   align-content: center;
-
+  outline: none;
   overflow: hidden;
   position: relative;
 }
@@ -326,6 +328,11 @@
 }
 
 .aegis-button:hover {
+  scale: 1.03;
+  box-shadow: 1px 2px 15px #efbf8438;
+}
+
+.aegis-button:focus {
   scale: 1.03;
   box-shadow: 1px 2px 15px #efbf8438;
 }

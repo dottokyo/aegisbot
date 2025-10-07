@@ -1,9 +1,7 @@
-import { metricsInit } from metrics.js
-import { graphInit } from graph.js
+// import { graphInit } from graph.js
 
-async function initialize() {
-  metricsInit();
-  graphInit();
-};
+// async function initialize() {
+//   graphInit();
+// };
 
-initialize();
+// initialize();
