@@ -6,7 +6,7 @@
   position: fixed;
   align-items: center;
   justify-content: space-between;
-  color: #fff; 
+  color: #fff;
   padding: 10px 40px 0;
 }
 
@@ -52,13 +52,13 @@
   backdrop-filter: blur(1px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   background: linear-gradient(
-    180deg, 
-    rgba(255, 255, 255, 0.05) 0%, 
-    rgba(255, 255, 255, 0.03) 50%, 
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
     rgba(255, 255, 255, 0.01) 80%,
     rgba(0, 0, 0, 0) 100% /* Полностью прозрачный */
-);
+  );
   border: none;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 10;
-} 
+}
