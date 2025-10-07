@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/winrate.css" />
+    <link rel="stylesheet" href="styles/popup.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/footer.css" />
     <link rel="stylesheet" href="styles/dashboard.css" />
@@ -38,6 +39,11 @@
     </header>
 
     <main class="main">
+      <div class="soon-popup">
+        AEGIS features is not available for all users on the moment, we working on it. 
+        <br>
+        Stay tuned!
+      </div>
       <section class="dashboard">
         <article id="pvalue" class="liquid-glass-card">
           <h2 class="article-title">Trading data</h2>
@@ -58,9 +64,7 @@
         </article>
         <article id="pvalue" class="liquid-glass-card">
           <h2 class="article-title">Title</h2>
-          <div class="metric-card">
-            <canvas id="graph" class="graph" width="100" height="40"></canvas>
-          </div>
+            <canvas id="graph" class="graph"></canvas>
         </article>
         <article class="navigation-card liquid-glass-card">
           <h2 class="article-title">Navigation</h2>
@@ -229,6 +233,7 @@
         });
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="scripts/index.js"></script>
   </body>
 </html>

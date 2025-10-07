@@ -1,24 +1,63 @@
-import getData from "./api.js"
+import getDataG from "./api.js"
 
-getData().then((data) => {
-  console.log(data);
-});
+let chartInstance;
 
-function graphCreate () {
-  const canvasPlot = document.getElementById(`graph`);
-  const ctx = canvasPlot.getContext(`2d`);
+export async function graphInit () {
+ const data = await getDataG();
 
-  const canvasPlotWidth = canvasPlot.clientWidth;
-  const canvasPlotHeight = canvasPlot.clientHeight;
+  if (chartInstance) {
+    chartInstance.data.datasets[0].data = [...chartInstance.data.datasets[0].data.slice(1), data[data.length - 1]];
+    chartInstance.update();
+  } else {
+    const ctx = document.getElementById('graph').getContext('2d');
 
-  const scaleX = 20;
-  const scaleY = 20;
-
-  ctx.beginPath();
-  ctx.strokeStyle = '#ff'
+    chartInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['0', '1', '2', '3', '4', '5'],
+        datasets: [{
+          label: '',
+          data: data,
+          borderWidth: 3,
+          borderColor: '#e7c69c',
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            ticks: {
+              display: false
+            },
+            grid: {
+              display: false
+            },
+            display: false
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              display: false
+            },
+            grid: {
+              display: false
+            },
+            display: false
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        elements: {
+          line: {
+            tension: 0.4,
+          },
+          point: {
+            radius: 0
+          }
+        },
+      }
+    });
+  }
 }
-
-
-// export function graphInit () {
-
-// }

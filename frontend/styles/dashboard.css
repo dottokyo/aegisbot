@@ -176,15 +176,21 @@
   }
 }
 
-.metric-card .graph {
-  width: 100%;
-  height: 100%;
-  border: 3px rgba(255, 192, 203, 0.63) dashed;
+.graph-card {
+  padding: 20px 30px;
+}
+
+.graph {
+  width: 90%;
+  aspect-ratio: 16/9;
+  margin: auto;
   border-radius: 20px;
+  background-color: transparent;
   text-align: center;
   align-content: center;
-  font-size: clamp(0.75rem, 0.7321rem + 0.0952vw, 0.875rem);
+  pointer-events: none;
 }
+
 
 @media (width <= 800px) {
   .navigation-card  {
