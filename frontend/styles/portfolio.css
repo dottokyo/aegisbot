@@ -197,11 +197,12 @@
   flex-direction: column;
   margin: auto;
   list-style: none;
-  overflow-y: auto;
+  overflow-y: scroll;
   width: 80%;
   height: 70%;
   align-items: center;;
   justify-content: center;
+  min-height: 50px;
 }
 
 .metric-card ul li {
