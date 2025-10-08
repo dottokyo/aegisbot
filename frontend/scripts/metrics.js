@@ -22,7 +22,7 @@ export async function metricsInit() {
       pValue.textContent = formatNumber(data.portfolioValue) || 'Loading...';  
 
       // Обновление WR, если WR равно 0, заменяем на 54
-      WR.textContent = data.winRate === 0 ? '55' + '%': data.WR;
+      WR.textContent = data.winRate === 0 ? '...' + '%': data.WR;
 
       // Форматирование PnL: если PnL больше 0, добавляем знак +, если меньше - 
       const pnl = Math.round(data.pnl24);
@@ -75,7 +75,7 @@ export async function metricsInit() {
         }
       }
 
-      trades.textContent = data.totalTrades || '42';
+      trades.textContent = data.totalTrades || '...';
 
     } catch (error) {
       console.error('Error fetching data:', error);
