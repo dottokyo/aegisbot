@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/winrate.css" />
-    <link rel="stylesheet" href="styles/popup.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/footer.css" />
     <link rel="stylesheet" href="styles/dashboard.css" />
@@ -21,7 +21,19 @@
   </head>
   <body>
     <div id="particles-js"></div>
-  
+
+    <div id="modal" class="modal">
+      <div class="modal-window">
+        <p>
+          AEGIS features is not available for all users in this moment, we
+          working on it.
+          <br />
+          Stay tuned!
+        </p>
+      </div>
+      <div class="overlay"></div>
+    </div>
+
     <header class="header liquid-glass-header">
       <div class="left-header">
         <a href="" class="header-reboot"
@@ -32,14 +44,13 @@
         /></a>
       </div>
       <div class="right-header">
-        <button type="button" id="connect-btn" class="connect-button" onclick="openPopup()">
+        <button id="openModalBtn1" class="connect-button">
           connect wallet
         </button>
       </div>
     </header>
 
     <main class="main">
-      
       <section class="dashboard">
         <article id="pvalue" class="liquid-glass-card">
           <h2 class="article-title">Trading data</h2>
@@ -60,27 +71,19 @@
         </article>
         <article id="pvalue" class="liquid-glass-card graph-card">
           <h2 class="article-title">Title</h2>
-            <canvas id="graph" class="graph"></canvas>
+          <canvas id="graph" class="graph"></canvas>
         </article>
         <article class="navigation-card liquid-glass-card">
           <h2 class="article-title">Navigation</h2>
           <nav class="navigation">
             <ul>
               <li>
-                <a
-                  class="liquid-glass-nav" 
-                  href="./protfolio.html"
-                >
-                portfolio 
+                <a class="liquid-glass-nav" href="./protfolio.html">
+                  portfolio
                 </a>
               </li>
               <li>
-                <a
-                  class="liquid-glass-nav" 
-                  href="./about.html"
-                >
-                  about us
-                </a>
+                <a class="liquid-glass-nav" href="./about.html"> about us </a>
               </li>
               <li>
                 <a
@@ -95,10 +98,22 @@
           </nav>
         </article>
         <article class="liquid-glass-card">
-          <button id="connect-btn" class="aegis-button" onclick="openPopup()">
-            try 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="none" stroke="#c1a683" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 19a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M10 5l2-2m-4.5 7a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m.5 6l8-8M5.5 21a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m13-13a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M12 21l2-2"/>
+          <button id="openModalBtn2" class="aegis-button">
+            try
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="#c1a683"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16.5 19a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M10 5l2-2m-4.5 7a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m.5 6l8-8M5.5 21a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m13-13a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M12 21l2-2"
+              />
             </svg>
             Aegis
           </button>
@@ -228,15 +243,24 @@
       });
     </script>
     <script>
-      const popup = document.getElementById('popup');
+      // Получаем элементы
+      const modal = document.getElementById("modal");
+      const openModalBtn1 = document.getElementById("openModalBtn1");
+      const openModalBtn2 = document.getElementById("openModalBtn2");
+      const overlay = document.querySelector(".overlay");
 
-      function openPopup() {
-        popup.classList.add('.open-popup')
-      }
+      // Открыть модалку
+      openModalBtn1.addEventListener("click", () => {
+        modal.classList.add("show"); // Добавляем класс 'show', чтобы показать модалку
+      });
+      openModalBtn2.addEventListener("click", () => {
+        modal.classList.add("show"); // Добавляем класс 'show', чтобы показать модалку
+      });
 
-      function closePopup() {
-        popup.classList.remove('.open-popup')
-      }
+      // Закрыть модалку при клике на область за пределами окна
+      overlay.addEventListener("click", () => {
+        modal.classList.remove("show"); // Прячем модалку
+      });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="scripts/index.js"></script>

@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/winrate.css" />
-    <link rel="stylesheet" href="styles/popup.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/footer.css" />
     <link rel="stylesheet" href="styles/about.css" />
@@ -21,6 +21,18 @@
   </head>
   <body>
     <div id="particles-js"></div>
+
+    <div id="modal" class="modal">
+      <div class="modal-window">
+        <p>
+          AEGIS features is not available for all users in this moment, we
+          working on it.
+          <br />
+          Stay tuned!
+        </p>
+      </div>
+      <div class="overlay"></div>
+    </div>
 
     <header class="header liquid-glass-header">
       <div class="left-header">
@@ -32,35 +44,54 @@
         /></a>
       </div>
       <div class="right-header">
-        <button id="connect-btn" class="connect-button">
-          connect wallet
-        </button>
+        <button id="openModalBtn" class="connect-button">connect wallet</button>
       </div>
     </header>
 
     <main class="main">
-      
       <section class="about">
-        <a  class="close-link" href="./">x</a>
+        <a class="close-link" href="./">x</a>
         <article class="liquid-glass-card">
           <h2 class="about-title">About us</h2>
-          <p class="about-text">The Aegis AI Agent is a highly advanced, machine-learning-based trading bot that automatically executes trades on the Asterdex platform. It operates using real-time market data, making decisions in milliseconds based on a sophisticated set of trading algorithms designed to maximize profits and minimize risks.
-          <br>
-          <br>
-          This AI-powered agent can analyze market trends, track asset performance, and predict the best moments to buy and sell digital assets. The Agent is designed to take the emotion out of trading, using data-driven models to make trading decisions faster and more efficiently than humans can.</p>
-          <br>
-          <br>
+          <p class="about-text">
+            The Aegis AI Agent is a highly advanced, machine-learning-based
+            trading bot that automatically executes trades on the Asterdex
+            platform. It operates using real-time market data, making decisions
+            in milliseconds based on a sophisticated set of trading algorithms
+            designed to maximize profits and minimize risks.
+            <br />
+            <br />
+            This AI-powered agent can analyze market trends, track asset
+            performance, and predict the best moments to buy and sell digital
+            assets. The Agent is designed to take the emotion out of trading,
+            using data-driven models to make trading decisions faster and more
+            efficiently than humans can.
+          </p>
+          <br />
+          <br />
           <div class="docs">
             <p>Read more here</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 21 9-7h-4.99L16 3H8v11H3z"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="#fff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m12 21 9-7h-4.99L16 3H8v11H3z"
+              />
             </svg>
             <button
-                type="button"
-                class="docs-button"
-                onclick="window.open('https://aegis-8.gitbook.io/aegis-docs/', '_blank')"
-              >
-                DOCS
+              type="button"
+              class="docs-button"
+              onclick="window.open('https://aegis-8.gitbook.io/aegis-docs/', '_blank')"
+            >
+              DOCS
             </button>
           </div>
         </article>
@@ -186,6 +217,22 @@
           },
           retina_detect: true,
         });
+      });
+    </script>
+    <script>
+      // Получаем элементы
+      const modal = document.getElementById("modal");
+      const openModalBtn = document.getElementById("openModalBtn");
+      const overlay = document.querySelector(".overlay");
+
+      // Открыть модалку
+      openModalBtn.addEventListener("click", () => {
+        modal.classList.add("show"); // Добавляем класс 'show', чтобы показать модалку
+      });
+
+      // Закрыть модалку при клике на область за пределами окна
+      overlay.addEventListener("click", () => {
+        modal.classList.remove("show"); // Прячем модалку
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
