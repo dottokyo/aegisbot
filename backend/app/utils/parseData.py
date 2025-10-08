@@ -1,66 +1,120 @@
 import requests
-from typing import Dict, Any, Optional
-from dotenv import load_dotenv
+from typing import Dict, Any, Optional, List
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
 WALLET_ADDRESS = os.getenv("TARGET_WALLET")
-API_URL = os.getenv("API_URL")
+API_URL = os.getenv("API_URL", "https://api.hyperliquid.xyz/info")
+
 
 def _fetch_clearinghouse_state() -> Optional[Dict]:
     try:
-        resp = requests.post(API_URL, json={
-            "type": "clearinghouseState",
-            "user": WALLET_ADDRESS
-        }, timeout=5)
+        resp = requests.post(
+            API_URL,
+            json={"type": "clearinghouseState", "user": WALLET_ADDRESS},
+            timeout=3
+        )
         return resp.json() if resp.status_code == 200 else None
-    except Exception:
+    except Exception as e:
+        print(f"Error fetching state: {e}")
         return None
 
-def _fetch_trades() -> list:
+
+def _fetch_user_fills() -> List[Dict]:
     try:
-        resp = requests.post(API_URL, json={
-            "type": "userFundingAndTrades",
-            "user": WALLET_ADDRESS
-        }, timeout=5)
-        return resp.json().get("trades", []) if resp.status_code == 200 else []
-    except Exception:
+        resp = requests.post(
+            API_URL,
+            json={"type": "userFills", "user": WALLET_ADDRESS},
+            timeout=3
+        )
+        if resp.status_code != 200:
+            print(f"HTTP {resp.status_code}: {resp.text}")
+            return []
+
+        data = resp.json()
+
+        # Hyperliquid может вернуть {"result": [...]} или сразу [...]
+        if isinstance(data, dict) and "result" in data:
+            fills = data["result"]
+        elif isinstance(data, list):
+            fills = data
+        else:
+            print(f"Unexpected response format: {type(data)}")
+            return []
+
+        if not isinstance(fills, list):
+            print(f"'result' is not a list: {type(fills)}")
+            return []
+
+        print(f"✅ Successfully fetched {len(fills)} fills")
+        return fills
+
+    except Exception as e:
+        print(f"❌ Exception in _fetch_user_fills: {e}")
         return []
 
+
 def calculate_metrics() -> Dict[str, Any]:
-    # === Portfolio Value ===
+    # === Portfolio & Unrealized PnL ===
     state = _fetch_clearinghouse_state()
     if not state or "marginSummary" not in state:
-        return {"error": "failed to fetch state"}
+        return {"error": "failed to fetch clearinghouse state"}
 
-    account_value = float(state["marginSummary"]["accountValue"])
-    positions = state.get("assetPositions", [])
+    margin = state["marginSummary"]
+    account_value = float(margin["accountValue"])
 
-    # === Unrealized PnL ===
-    unrealized_pnl = sum(float(p["position"].get("unrealizedPnl", 0)) for p in positions)
-    pnl_pct = 0.0
-    if account_value - unrealized_pnl > 0:
-        pnl_pct = (unrealized_pnl / (account_value - unrealized_pnl)) * 100
+    current_positions = []
+    unrealized_pnl = 0.0
 
-    # === Win Rate ===
-    trades = _fetch_trades()
-    closed_trades = [t for t in trades if t.get("closedPnl") is not None]
-    win_rate = 0.0
+    for asset_pos in state.get("assetPositions", []):
+        pos = asset_pos.get("position")
+        if not pos:
+            continue
+        szi = pos.get("szi", "0")
+        if float(szi) == 0:
+            continue  # no active position
+        coin = pos.get("coin")
+        if coin:
+            current_positions.append(coin)
+        unrealized_pnl += float(pos.get("unrealizedPnl", "0"))
 
-    if closed_trades:
-        wins = [float(t["closedPnl"]) for t in closed_trades if float(t["closedPnl"]) > 0]
-        losses = [abs(float(t["closedPnl"])) for t in closed_trades if float(t["closedPnl"]) < 0]
-        win_count = len(wins)
-        win_rate = round((win_count / len(closed_trades)) * 100, 1)
-        total_profit = sum(wins)
-        total_loss = sum(losses)
+    # === Unrealized PnL % ===
+    base_equity = account_value - unrealized_pnl
+    unrealized_pct = 0.0
+    if base_equity > 0:
+        unrealized_pct = (unrealized_pnl / base_equity) * 100
+
+    # === Realized PnL & Win Rate from FILLS ===
+    fills = _fetch_user_fills()
+    realized_pnl_total = 0.0
+    winning_trades = 0
+    total_trades = 0
+
+    for fill in fills:
+        pnl_str = fill.get("pnl")
+        if pnl_str is None:
+            continue
+        try:
+            pnl = float(pnl_str)
+        except (ValueError, TypeError):
+            print(f"Invalid pnl value: {pnl_str} for fill: {fill}")
+            continue
+
+        total_trades += 1
+        realized_pnl_total += pnl
+        if pnl > 0:
+            winning_trades += 1
+
+    win_rate = round((winning_trades / total_trades) * 100, 1) if total_trades > 0 else 0.0
 
     return {
-        "portfolioValue": account_value,
-        "totalpnl": unrealized_pnl,
-        "pnl24": pnl_pct,
+        "portfolioValue": round(account_value, 2),
+        "unrealizedPnl": round(unrealized_pnl, 2),
+        "unrealizedPnlPct": round(unrealized_pct, 2),
+        "realizedPnl": round(realized_pnl_total, 2),
         "winRate": win_rate,
-        "currentPositions": len(positions),
-        "totalTrades": len(closed_trades)
+        "totalTrades": total_trades,
+        "currentPositions": current_positions,
     }
