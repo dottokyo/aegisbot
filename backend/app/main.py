@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
-from utils.parseData import calculate_metrics
+from app.utils.parseData import calculate_metrics
 
 trader_data = {"error": "initializing..."}
 
