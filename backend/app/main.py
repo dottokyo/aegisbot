@@ -1,10 +1,9 @@
-# app/main.py
 import uvicorn
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
-from utils.parseData import calculate_metrics
+from app.utils.parseData import calculate_metrics
 
 trader_data = {"error": "initializing..."}
 
@@ -42,11 +41,3 @@ app.add_middleware(
 @app.get("/api/trader")
 async def get_trader_data():
     return trader_data
-
-if __name__ == "__main__":
-    uvicorn.run(
-        "app.main:app",
-        host="0.0.0.0",
-        port=5001,
-        reload=True
-    )
