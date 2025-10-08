@@ -1,32 +1,38 @@
-async function openPopup() {
+const popupBtn = document.getElementById('connect-btn');
+
+// Функция открытия попапа
+function openPopup() {
   const popup = document.querySelector('.soon-popup');
   const overlay = document.createElement('div');
   overlay.classList.add('soon-popup-overlay');
   document.body.appendChild(overlay);
 
-  popup.style.display = 'block'; 
-  overlay.style.display = 'block';
+  popup.classList.remove('hidden');  // Убираем класс hidden, показываем попап
+  overlay.style.display = 'block';  // Показываем фон с блюром
 
-  overlay.addEventListener('click', closePopup);
-  
-  document.addEventListener('keydown', closePopup);
+  // Сохраняем обработчик для правильного удаления
+  const closeHandler = () => closePopup(overlay);
+
+  // Добавляем обработчики
+  overlay.addEventListener('click', closeHandler); 
+  document.addEventListener('keydown', closeHandler); 
 }
 
-async function closePopup() {
+// Функция закрытия попапа
+function closePopup(overlay) {
   const popup = document.querySelector('.soon-popup');
-  const overlay = document.querySelector('.soon-popup-overlay');
-  
+
   if (popup && overlay) {
-    popup.style.display = 'none';
-    overlay.style.display = 'none'; 
+    popup.classList.add('hidden');  // Добавляем класс hidden, скрываем попап
+    overlay.style.display = 'none';  // Скрываем фон с блюром
   }
 
-  // Убираем обработчики событий
-  document.removeEventListener('keydown', closePopup);
-  overlay.removeEventListener('click', closePopup);
+  // Убираем обработчики после закрытия
+  document.removeEventListener('keydown', closePopup); // Закрытие при нажатии клавиши
+  overlay.removeEventListener('click', closePopup); // Закрытие при клике на фон
 }
 
-
-export async function showPopup() {
-  await openPopup();
+// Экспортируем функцию для вызова при клике на кнопку
+export function showPopupOnClick() {
+  popupBtn.addEventListener('click', openPopup);
 }

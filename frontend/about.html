@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aegis</title>
+    <title>About us</title>
     <link rel="icon" href="images/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,13 +16,12 @@
     <link rel="stylesheet" href="styles/popup.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/footer.css" />
-    <link rel="stylesheet" href="styles/dashboard.css" />
+    <link rel="stylesheet" href="styles/about.css" />
     <link rel="stylesheet" href="styles/global.css" />
   </head>
   <body>
     <div id="particles-js"></div>
 
-  
     <header class="header liquid-glass-header">
       <div class="left-header">
         <a href="" class="header-reboot"
@@ -41,70 +40,29 @@
 
     <main class="main">
       
-      <section class="dashboard">
-        <article id="pvalue" class="liquid-glass-card">
-          <h2 class="article-title">Trading data</h2>
-          <div class="article-grid">
-            <div class="metric-card">
-              <h3 class="metric-title">Portfolio <br />Value</h3>
-              <p class="metric-value">$54,100.24</p>
-            </div>
-            <div class="metric-card">
-              <h3 class="metric-title">24h P&L</h3>
-              <p class="metric-value in-black">+3.2%</p>
-            </div>
-            <div class="metric-card">
-              <h3 class="metric-title">Win Rate</h3>
-              <p class="metric-value">36%</p>
-            </div>
-          </div>
-        </article>
-        <article id="pvalue" class="liquid-glass-card">
-          <h2 class="article-title">Title</h2>
-            <canvas id="graph" class="graph"></canvas>
-        </article>
-        <article class="navigation-card liquid-glass-card">
-          <h2 class="article-title">Navigation</h2>
-          <nav class="navigation">
-            <ul>
-              <li>
-                <a 
-                  target="_blank"
-                  class="liquid-glass-nav" 
-                  href="/"
-                >
-                portfolio 
-                </a>
-              </li>
-              <li>
-                <a 
-                  target="_blank"
-                  class="liquid-glass-nav" 
-                  href="./about.html"
-                >
-                  about us
-                </a>
-              </li>
-              <li>
-                <a
-                  target="_blank"
-                  class="liquid-glass-nav"
-                  href="https://aegis-8.gitbook.io/aegis-docs/"
-                >
-                  docs
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </article>
+      <section class="about">
+        <a href="./" class="close-link">x</a>
         <article class="liquid-glass-card">
-          <button id="connect-btn" class="aegis-button">
-            try 
+          <h2 class="about-title">About us</h2>
+          <p class="about-text">The Aegis AI Agent is a highly advanced, machine-learning-based trading bot that automatically executes trades on the Asterdex platform. It operates using real-time market data, making decisions in milliseconds based on a sophisticated set of trading algorithms designed to maximize profits and minimize risks.
+          <br>
+          <br>
+          This AI-powered agent can analyze market trends, track asset performance, and predict the best moments to buy and sell digital assets. The Agent is designed to take the emotion out of trading, using data-driven models to make trading decisions faster and more efficiently than humans can.</p>
+          <br>
+          <br>
+          <div class="docs">
+            <p>Read more here</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="none" stroke="#c1a683" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 19a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M10 5l2-2m-4.5 7a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m.5 6l8-8M5.5 21a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m13-13a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M12 21l2-2"/>
+              <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 21 9-7h-4.99L16 3H8v11H3z"/>
             </svg>
-            Aegis
-          </button>
+            <button
+                type="button"
+                class="docs-button"
+                onclick="window.open('https://aegis-8.gitbook.io/aegis-docs/', '_blank')"
+              >
+                DOCS
+            </button>
+          </div>
         </article>
       </section>
     </main>

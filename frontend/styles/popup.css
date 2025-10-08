@@ -25,5 +25,9 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
   backdrop-filter: blur(5px); /* Эффект блюра */
-  z-index: 9998; /* Ниже, чем попап */
+  z-index: 998; /* Ниже, чем попап */
+}
+
+.hidden {
+  display: none;
 }
