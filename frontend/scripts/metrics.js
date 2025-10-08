@@ -2,7 +2,7 @@ import { getData } from './api.js';
 
 export async function metricsInit() {
   const pValue = document.getElementById('pValue');
-  const TPnL = document.getElementById('TPnL');
+  const TPnL = document.getElementById('tPnL');
   const PnL = document.getElementById('PnL');
   const WR = document.getElementById('WR');
   const pos = document.getElementById('pos');
@@ -54,8 +54,24 @@ export async function metricsInit() {
         TPnL.classList.remove('in-black');
       }
 
-      // Обновляем позиции и сделки
-      pos.textContent = data.currentPositions || 'Loading...';
+      
+      // Динамическое обновление списка для currentPositions
+      if (data.currentPositions && Array.isArray(data.currentPositions)) {
+        console.log("Current Positions:", data.currentPositions);  // Логируем полученные данные
+
+        // Очищаем старые элементы списка, если они есть
+        pos.innerHTML = '';
+
+        // Добавляем новые элементы в список
+        data.currentPositions.forEach(position => {
+          const li = document.createElement('li');
+          li.textContent = position; // Даем текст для каждого элемента списка
+          pos.appendChild(li); // Добавляем в DOM
+        });
+      } else {
+        console.log("No currentPositions data or it's not an array");
+      }
+
       trades.textContent = data.totalTrades || 'Loading...';
 
     } catch (error) {
@@ -64,7 +80,7 @@ export async function metricsInit() {
   }
 
   // Запускаем обновление каждую секунду
-  setInterval(updateMetrics, 500);  // Обновление данных каждую секунду
+  setInterval(updateMetrics, 1000);  // Обновление данных каждую секунду
 }
 
 metricsInit();  // Вызовем функцию, чтобы она начала работать сразу

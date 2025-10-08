@@ -11,6 +11,7 @@ export const getData = () => {
     .then(handleResponse)
     .then(data => {
       // Возвращаем только значение portfolioValue
+      console.log(data);
       return data;
     })
     .catch(error => {
