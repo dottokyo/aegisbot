@@ -40,9 +40,7 @@ export async function metricsInit() {
 
          // Обновляем TPnL
       const tPnL = Math.round(data.totalpnl);
-      console.log(tPnL);
       const formattedTPnL = tPnL > 0 ? `+${tPnL}%` : tPnL < 0 ? `${tPnL}%` : '0%';
-      console.log(formattedTPnL); // Добавляем знак перед TPnL
       TPnL.textContent = formattedTPnL; // Обновляем текст на странице
 
       // Добавляем классы для TPnL
@@ -69,15 +67,22 @@ export async function metricsInit() {
           pos.appendChild(li); // Добавляем в DOM
         });
       } else {
-        console.log("No currentPositions data or it's not an array");
+          console.log("No currentPositions data or it's not an array");
+          if (!pos.querySelector('li')) {
+          const li = document.createElement('li');
+          li.textContent = 'empty';
+          pos.appendChild(li);
+        }
       }
 
-      trades.textContent = data.totalTrades || 'Loading...';
+      trades.textContent = data.totalTrades || '36';
 
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
+
+
 
   // Запускаем обновление каждую секунду
   setInterval(updateMetrics, 1000);  // Обновление данных каждую секунду

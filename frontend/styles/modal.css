@@ -9,13 +9,12 @@
   align-items: center;
   justify-content: center;
   visibility: hidden;
-  z-index: -1;
   opacity: 0;
+  transition: visibility 0.2s ease, opacity 0.19s ease;
 }
 
 .modal.show {
   visibility: visible;
-  z-index: 100;
   opacity: 1;
 }
 

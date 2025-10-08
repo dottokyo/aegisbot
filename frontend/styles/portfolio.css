@@ -201,6 +201,7 @@
   width: 80%;
   height: 70%;
   align-items: center;;
+  justify-content: center;
 }
 
 .metric-card ul li {
