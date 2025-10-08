@@ -16,13 +16,12 @@
     <link rel="stylesheet" href="styles/popup.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/footer.css" />
-    <link rel="stylesheet" href="styles/dashboard.css" />
+    <link rel="stylesheet" href="styles/portfolio.css" />
     <link rel="stylesheet" href="styles/global.css" />
   </head>
   <body>
     <div id="particles-js"></div>
 
-  
     <header class="header liquid-glass-header">
       <div class="left-header">
         <a href="" class="header-reboot"
@@ -39,72 +38,34 @@
       </div>
     </header>
 
-    <main class="main">
+     <main class="main">
       
-      <section class="dashboard">
-        <article id="pvalue" class="liquid-glass-card">
-          <h2 class="article-title">Trading data</h2>
-          <div class="article-grid">
-            <div class="metric-card">
-              <h3 class="metric-title">Portfolio <br />Value</h3>
-              <p class="metric-value">$54,100.24</p>
-            </div>
-            <div class="metric-card">
-              <h3 class="metric-title">24h P&L</h3>
-              <p class="metric-value in-black">+3.2%</p>
-            </div>
-            <div class="metric-card">
-              <h3 class="metric-title">Win Rate</h3>
-              <p class="metric-value">36%</p>
-            </div>
-          </div>
+      <section class="portfolio liquid-glass-card">
+        <a href="./" class="close-link">x</a>
+        <article class="metric-card">
+          <h3 class="metric-title">Portfolio <br />Value</h3>
+          <p class="metric-value">$54,100.24</p>
         </article>
-        <article id="pvalue" class="liquid-glass-card">
-          <h2 class="article-title">Title</h2>
-            <canvas id="graph" class="graph"></canvas>
+        <article class="metric-card">
+          <h3 class="metric-title">Total PnL <br />(All-Time)</h3>
+          <p class="metric-value in-black">+8.6%</p>
         </article>
-        <article class="navigation-card liquid-glass-card">
-          <h2 class="article-title">Navigation</h2>
-          <nav class="navigation">
-            <ul>
-              <li>
-                <a 
-                  target="_blank"
-                  class="liquid-glass-nav" 
-                  href="./protfolio.html"
-                >
-                portfolio 
-                </a>
-              </li>
-              <li>
-                <a 
-                  target="_blank"
-                  class="liquid-glass-nav" 
-                  href="./about.html"
-                >
-                  about us
-                </a>
-              </li>
-              <li>
-                <a
-                  target="_blank"
-                  class="liquid-glass-nav"
-                  href="https://aegis-8.gitbook.io/aegis-docs/"
-                >
-                  docs
-                </a>
-              </li>
-            </ul>
-          </nav>
+        <article class="metric-card">
+          <h3 class="metric-title">24h PnL</h3>
+          <p class="metric-value in-black">+3.2%</p>
         </article>
-        <article class="liquid-glass-card">
-          <button id="connect-btn" class="aegis-button">
-            try 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="none" stroke="#c1a683" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 19a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M10 5l2-2m-4.5 7a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m.5 6l8-8M5.5 21a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m13-13a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M12 21l2-2"/>
-            </svg>
-            Aegis
-          </button>
+        <article class="metric-card">
+          <h3 class="metric-title">Win Rate</h3>
+          <p class="metric-value">36%</p>
+        </article>
+        <article class="metric-card">
+          <h3 class="metric-title mrg-0">Current positions</h3>
+          <ul>
+          </ul>
+        </article>
+        <article class="metric-card">
+          <h3 class="metric-title mrg-0">Total trades</h3>
+          <p class="metric-value">16</p>
         </article>
       </section>
     </main>
