@@ -22,6 +22,13 @@
   <body>
     <div id="particles-js"></div>
 
+    <div id="popup" class="connect-popup">
+      <button type="button" onclick="closePopup()" class="close-button">x</button>
+      <p>AEGIS features on the available for all users in this moment, we working on it. 
+      <br>
+      Stay tuned!
+      </p>
+    </div>
   
     <header class="header liquid-glass-header">
       <div class="left-header">
@@ -33,7 +40,7 @@
         /></a>
       </div>
       <div class="right-header">
-        <button id="connect-btn" class="connect-button">
+        <button type="button" id="connect-btn" class="connect-button" onclick="openPopup()">
           connect wallet
         </button>
       </div>
@@ -47,19 +54,19 @@
           <div class="article-grid">
             <div class="metric-card">
               <h3 class="metric-title">Portfolio <br />Value</h3>
-              <p class="metric-value">$54,100.24</p>
+              <p class="metric-value" id="pValue">$54,100.24</p>
             </div>
             <div class="metric-card">
               <h3 class="metric-title">24h P&L</h3>
-              <p class="metric-value in-black">+3.2%</p>
+              <p class="metric-value in-black" id="PnL">+3.2%</p>
             </div>
             <div class="metric-card">
               <h3 class="metric-title">Win Rate</h3>
-              <p class="metric-value">36%</p>
+              <p class="metric-value" id="WR">36%</p>
             </div>
           </div>
         </article>
-        <article id="pvalue" class="liquid-glass-card">
+        <article id="pvalue" class="liquid-glass-card graph-card">
           <h2 class="article-title">Title</h2>
             <canvas id="graph" class="graph"></canvas>
         </article>
@@ -98,7 +105,7 @@
           </nav>
         </article>
         <article class="liquid-glass-card">
-          <button id="connect-btn" class="aegis-button">
+          <button id="connect-btn" class="aegis-button" onclick="openPopup()">
             try 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" stroke="#c1a683" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 19a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M10 5l2-2m-4.5 7a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m.5 6l8-8M5.5 21a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m13-13a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M12 21l2-2"/>
@@ -229,6 +236,17 @@
           retina_detect: true,
         });
       });
+    </script>
+    <script>
+      const popup = document.getElementById('popup');
+
+      function openPopup() {
+        popup.classList.add('.open-popup')
+      }
+
+      function closePopup() {
+        popup.classList.remove('.open-popup')
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="scripts/index.js"></script>

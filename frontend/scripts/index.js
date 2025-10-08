@@ -1,7 +1,8 @@
-import { graphInit } from './graph.js'
+import { graphInit } from './graph.js';
 
 async function initialize() {
-  setInterval(graphInit, 1000); 
+  await graphInit();
+  setInterval(graphInit, 10000);
 };
 
 initialize();
