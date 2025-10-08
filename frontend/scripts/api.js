@@ -11,7 +11,7 @@ export const getData = () => {
     .then(handleResponse)
     .then(data => {
       // Возвращаем только значение portfolioValue
-      return data;
+        return data;
     })
     .catch(error => {
       console.error("Error fetching data:", error);

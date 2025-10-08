@@ -75,7 +75,7 @@ export async function metricsInit() {
         }
       }
 
-      trades.textContent = data.totalTrades || '39';
+      trades.textContent = data.totalTrades || '41';
 
     } catch (error) {
       console.error('Error fetching data:', error);
