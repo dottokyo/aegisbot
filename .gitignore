@@ -52,4 +52,21 @@ frontend/public/.DS_Store
 frontend/.env
 frontend/.env.local
 frontend/.env.development.local
-frontend/.env.productio
+frontend/.env.production
+
+# Python files and environment
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.bak
+*.swp
+*.swo
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
